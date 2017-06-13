@@ -1,20 +1,20 @@
 var analyzer;
-var mic; 
+var mic;
 var audioTriggerLow, audioTriggerHigh;
 
 function preload() {
   // load image
-  img = loadGif("img/radio.gif");
+  img = loadGif("img/slider.gif");
   img.pause();
 }
 
 
 function setup() {
-  createCanvas(1200 , 800);
+  createCanvas(800 , 800);
 // create an audio input instance and start listening
   mic = new p5.AudioIn();
   mic.start();
-  
+
   // create a new Amplitude analyzer
   analyzer = new p5.Amplitude();
 
@@ -22,19 +22,19 @@ function setup() {
   analyzer.setInput(mic);
 }
 
-//load that image, my dude
+//load that volume slider image, my dudes
 
 function draw() {
-  background(0,196,136);
+  background(255);
   //image(img, 0, 0);
   if (img.loaded()) {
-    image(img, 0, 0);
+    image(img, 40, 40);
     audioTriggerLow();
     //img.pause();
   }
 }
 
-// this function connects the volume value to a gif frame value.
+// this function connects the volume of the microphone to a gif frame.
 
 function audioTriggerLow() {
    if (img.loaded()) {
@@ -43,4 +43,3 @@ function audioTriggerLow() {
     img.frame(frame);
   }
 }
-
